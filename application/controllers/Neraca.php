@@ -13,6 +13,7 @@ class Neraca extends CI_Controller
 		//Load Dependencies
 		$this->load->model('m_jurnal');
 		$this->load->model('m_akun');
+		$this->load->model('m_neraca');
 	}
 
 	// List all your items
@@ -20,8 +21,24 @@ class Neraca extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Data Neraca',
-			'bulantahun' => $this->m_jurnal->bulantahun(),
-			'isi' => 'frontend/neraca/v_neraca'
+			// 'bulantahun' => $this->m_jurnal->bulantahun(),
+			'isi' => 'frontend/neraca/v_neraca_lap'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+
+	public function search()
+	{
+		$dari = $this->input->post('dari');
+		$sampai = $this->input->post('sampai');
+		$data = array(
+			'title' => 'Hasil Laporan Neraca',
+			'dari' => $dari,
+			'sampai' => $sampai,
+			'tetap' => $this->m_neraca->hasil_tetap($dari, $sampai),
+			'lancar' => $this->m_neraca->hasil_lancar($dari, $sampai),
+			'pasiva' => $this->m_neraca->hasil_pasiva($dari, $sampai),
+			'isi' => 'frontend/neraca/v_neraca_hasil'
 		);
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
 	}
@@ -35,8 +52,6 @@ class Neraca extends CI_Controller
 			'debit' => $this->m_jurnal->hasildebit($bulan, $tahun),
 			'isi' => 'frontend/neraca/v_detail'
 		);
-		// echo $this->db->last_query();
-		// die();
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
 	}
 }
