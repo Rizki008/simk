@@ -32,7 +32,7 @@ class Akun extends CI_Controller
 			'no_reff' => $this->input->post('no_reff'),
 			'id_user' => $this->session->userdata('id_user'),
 			'nama_reff' => $this->input->post('nama_reff'),
-			'keterangan' => $this->input->post('keterangan'),
+			// 'keterangan' => $this->input->post('keterangan'),
 		);
 		$this->m_akun->add($data);
 		$this->session->set_flashdata('pesan', 'data akun berhasil disimpan');
@@ -47,7 +47,7 @@ class Akun extends CI_Controller
 			'no_reff' => $this->input->post('no_reff'),
 			'id_user' => $this->session->userdata('id_user'),
 			'nama_reff' => $this->input->post('nama_reff'),
-			'keterangan' => $this->input->post('keterangan'),
+			// 'keterangan' => $this->input->post('keterangan'),
 		);
 		$this->m_akun->update($data);
 		$this->session->set_flashdata('pesan', 'data akun berhasil diupdate');
