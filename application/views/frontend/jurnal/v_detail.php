@@ -14,6 +14,7 @@
 								<tr>
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Tanggal</th>
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama Akun</th>
+									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Keterangan</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No Reff</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Debit</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Kredit</th>
@@ -34,6 +35,9 @@
 										<td>
 											<p class="text-xs font-weight-bold mb-0"><?= $value->nama_reff ?></p>
 										</td>
+										<td>
+											<p class="text-xs font-weight-bold mb-0"><?= $value->keterangan ?></p>
+										</td>
 										<td class="align-middle text-center text-sm">
 											<span class="badge badge-sm bg-gradient-success"><?= $value->no_reff ?></span>
 										</td>
@@ -51,17 +55,18 @@
 												<span class="text-secondary text-xs font-weight-bold">0</span>
 											<?php } ?>
 										</td>
-										<td class="align-middle">
+										<!-- <td class="align-middle">
 											<a href="<?= base_url('jurnal/update/' . $value->id_transaksi) ?>" class="btn bg-gradient-warning btn-sm">
 												Edit
 											</a>
 											<a href="<?= base_url('jurnal/delete/' . $value->id_transaksi) ?>" class="btn bg-gradient-danger btn-sm">
 												Hapus
 											</a>
-										</td>
+										</td> -->
 									</tr>
 								<?php } ?>
 								<tr>
+									<td></td>
 									<td></td>
 									<td></td>
 									<td class="align-middle text-center text-sm">
@@ -70,12 +75,14 @@
 									<td class="align-middle text-center">
 										<?php foreach ($debit as $key => $debits) { ?>
 										<?php } ?>
-										<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($debits->total, 0) ?> </p>
+										<b>Rp. <?= number_format($debits->total, 0) ?></b>
+										<!-- <p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($debits->total, 0) ?> </p> -->
 									</td>
 									<td class="align-middle text-center">
 										<?php foreach ($kredit as $key => $kredits) { ?>
 										<?php } ?>
-										<p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($kredits->total, 0) ?> </p>
+										<b>Rp. <?= number_format($kredits->total, 0) ?></b>
+										<!-- <p class="text-xs font-weight-bold mb-0">Rp. <?= number_format($kredits->total, 0) ?> </p> -->
 									</td>
 								</tr>
 

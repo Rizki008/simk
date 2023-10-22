@@ -59,7 +59,8 @@
 												<span class="text-secondary text-xs font-weight-bold">0</span>
 											<?php } ?>
 										</td>
-										<?php if ($value->jenis_saldo == "debit") {
+										<?php
+										if ($value->jenis_saldo == "debit") {
 											$debit = $debit + $value->saldo;
 										} else {
 											$kredit = $kredit + $value->saldo;
@@ -78,7 +79,7 @@
 												<span class="text-secondary text-xs font-weight-bold">-</span>
 											</td>
 											<td class="align-middle text-center">
-												<span class="text-secondary text-xs font-weight-bold">Rp. <?= number_format($hasil, 0) ?></span>
+												<span class="text-secondary text-xs font-weight-bold">Rp. <?= number_format(abs($hasil), 0) ?></span>
 											</td>
 										<?php } ?>
 									</tr>

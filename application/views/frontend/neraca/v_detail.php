@@ -38,18 +38,30 @@
 											<span class="badge badge-sm bg-gradient-success"><?= $value->no_reff ?></span>
 										</td>
 										<td class="align-middle text-center">
-											<?php if ($value->jenis_saldo == 'debit') { ?>
-												<span class="text-secondary text-xs font-weight-bold">Rp. <?= number_format($value->saldo, 0) ?></span>
-											<?php } else { ?>
-												<span class="text-secondary text-xs font-weight-bold">0</span>
-											<?php } ?>
+											<?php
+											// if ($value->jenis_saldo == 'debit') { 
+											?>
+											<span class="text-secondary text-xs font-weight-bold">Rp. <?= number_format($value->debet, 0) ?></span>
+											<?php
+											// } else { 
+											?>
+											<span class="text-secondary text-xs font-weight-bold">0</span>
+											<?php
+											// }
+											?>
 										</td>
 										<td class="align-middle text-center">
-											<?php if ($value->jenis_saldo == 'kredit') { ?>
-												<span class="text-secondary text-xs font-weight-bold">Rp. <?= number_format($value->saldo, 0) ?></span>
-											<?php } else { ?>
-												<span class="text-secondary text-xs font-weight-bold">0</span>
-											<?php } ?>
+											<?php
+											// if ($value->jenis_saldo == 'kredit') {
+											?>
+											<span class="text-secondary text-xs font-weight-bold">Rp. <?= number_format($value->kredit, 0) ?></span>
+											<?php
+											// } else {
+											?>
+											<span class="text-secondary text-xs font-weight-bold">0</span>
+											<?php
+											// }
+											?>
 										</td>
 
 									</tr>

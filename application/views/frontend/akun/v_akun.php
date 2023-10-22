@@ -18,7 +18,7 @@
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No Reff</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Reff</th>
-									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
+									<!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th> -->
 									<th class="text-secondary opacity-7"></th>
 								</tr>
 							</thead>
@@ -39,9 +39,9 @@
 										<td class="align-middle text-center text-sm">
 											<span class="badge badge-sm bg-gradient-success"><?= $value->nama_reff ?></span>
 										</td>
-										<td class="align-middle text-center">
+										<!-- <td class="align-middle text-center">
 											<span class="text-secondary text-xs font-weight-bold"><?= $value->keterangan ?></span>
-										</td>
+										</td> -->
 										<td class="align-middle">
 											<button type="button" class="btn bg-gradient-warning btn-sm" data-bs-toggle="modal" data-bs-target="#edit<?= $value->id_akun ?>">
 												Edit
@@ -81,10 +81,10 @@
 					<div class="input-group input-group-outline mb-3">
 						<input type="text" name="nama_reff" class="form-control" placeholder="Nama Reff">
 					</div>
-					<label class="form-label">Keterangan</label>
+					<!-- <label class="form-label">Keterangan</label>
 					<div class="input-group input-group-outline mb-3">
 						<input type="text" name="keterangan" class="form-control" placeholder="Keterangan">
-					</div>
+					</div> -->
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -116,10 +116,10 @@
 						<div class="input-group input-group-outline mb-3">
 							<input type="text" name="nama_reff" class="form-control" value="<?= $values->nama_reff ?>" placeholder="Nama Reff">
 						</div>
-						<label class="form-label">Keterangan</label>
+						<!-- <label class="form-label">Keterangan</label>
 						<div class="input-group input-group-outline mb-3">
 							<input type="text" name="keterangan" class="form-control" value="<?= $values->keterangan ?>" placeholder="Keterangan">
-						</div>
+						</div> -->
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
