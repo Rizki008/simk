@@ -46,7 +46,7 @@
 										<h6 class="mb-0 text-sm">1. Dana Cadangan</h6>
 									</th>
 									<th>10%</th>
-									<th>Rp. <?= number_format($hasil_shu - (10 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((10 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
@@ -59,56 +59,56 @@
 										<h6 class="mb-0 text-sm"> - Jasa Modal Anggota</h6>
 									</th>
 									<th>25%</th>
-									<th>Rp. <?= number_format($hasil_shu - (25 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((25 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									&nbsp;<th>
 										<h6 class="mb-0 text-sm"> - Jasa Anggota</h6>
 									</th>
 									<th>15%</th>
-									<th>Rp. <?= number_format($hasil_shu - (15 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((15 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
 										<h6 class="mb-0 text-sm">3. Dana Pengurus</h6>
 									</th>
 									<th>10%</th>
-									<th>Rp. <?= number_format($hasil_shu - (10 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((10 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
 										<h6 class="mb-0 text-sm">4. Dana Pengawas</h6>
 									</th>
 									<th>10%</th>
-									<th>Rp. <?= number_format($hasil_shu - (10 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((10 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
 										<h6 class="mb-0 text-sm">5. Dana Kesejahtraan Karyawan</h6>
 									</th>
 									<th>10%</th>
-									<th>Rp. <?= number_format($hasil_shu - (10 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((10 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
 										<h6 class="mb-0 text-sm">6. Dana Sosial</h6>
 									</th>
 									<th>2,5%</th>
-									<th>Rp. <?= number_format($hasil_shu - (2.5 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((2.5 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
 										<h6 class="mb-0 text-sm">7. Dana Pembangunan Daerah Kerja</h6>
 									</th>
 									<th>2,5%</th>
-									<th>Rp. <?= number_format($hasil_shu - (2.5 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((2.5 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<tr>
 									<th>
 										<h6 class="mb-0 text-sm">8. Dana Kesejahtraan Anggota</h6>
 									</th>
 									<th>15%</th>
-									<th>Rp. <?= number_format($hasil_shu - (15 / 100 * $hasil_shu), 0) ?></th>
+									<th>Rp. <?= number_format((15 / 100 * $hasil_shu), 0) ?></th>
 								</tr>
 								<br>
 								<tr>

@@ -120,8 +120,8 @@
 									$hasilst = $debitst - $kreditst;
 									$total += $hasilst;
 
-									$pph = $hasilst - (0.5 / 100 * $hasilst);
-									$ppn = $pph - (11 / 100 * $pph);
+									$pph =  (0.5 / 100 * $hasilst);
+									$ppn =  (11 / 100 * $pph);
 								?>
 								<?php } ?>
 								<tr>

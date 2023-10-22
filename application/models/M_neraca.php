@@ -46,15 +46,15 @@ class M_neraca extends CI_Model
 	// KEUANGAN
 	public function hasil_keuangan($sampai)
 	{
-		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$sampai' AND status='transaksi'")->result();
+		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$sampai' AND status='transaksi' AND no_reff !='4-111' AND no_reff !='4-112' AND no_reff !='4-113'")->result();
 	}
 	public function hasil_beban($sampai)
 	{
-		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$sampai' AND status='transaksi' AND jenis_saldo='debit'")->result();
+		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$sampai' AND status='transaksi' AND jenis_saldo='debit' AND no_reff !='4-111' AND no_reff !='4-112' AND no_reff !='4-113'")->result();
 	}
 	public function hasil_pendapatan($sampai)
 	{
-		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$sampai' AND status='transaksi' AND jenis_saldo='kredit'")->result();
+		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$sampai' AND status='transaksi' AND jenis_saldo='kredit' AND no_reff !='4-111' AND no_reff !='4-112' AND no_reff !='4-113'")->result();
 	}
 
 
