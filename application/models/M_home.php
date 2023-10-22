@@ -10,10 +10,10 @@ class M_home extends CI_Model
 	}
 	public function totaldebit()
 	{
-		return $this->db->query("SELECT*, SUM(saldo) AS total FROM transaksi WHERE jenis_saldo='debit'")->result();
+		return $this->db->query("SELECT *  FROM transaksi WHERE jenis_saldo='debit'")->result();
 	}
 	public function totalkredit()
 	{
-		return $this->db->query("SELECT*, SUM(saldo) AS totals FROM transaksi WHERE jenis_saldo='kredit'")->result();
+		return $this->db->query("SELECT * FROM transaksi WHERE jenis_saldo='kredit'")->result();
 	}
 }
