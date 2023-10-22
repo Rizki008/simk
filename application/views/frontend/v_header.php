@@ -24,6 +24,18 @@
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'anggota'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('anggota') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">person</i>
+						</div>
+						<span class="nav-link-text ms-1">Anggota</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
 														$this->uri->segment(1) == 'akun'
 													) {
 														echo "active bg-gradient-primary";
@@ -34,6 +46,108 @@
 						<span class="nav-link-text ms-1">Akun</span>
 					</a>
 				</li>
+				<li class="nav-item mt-3">
+					<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Simpanan</h6>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'simpanan' && $this->uri->segment(2) == 'pokok'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('simpanan/pokok') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">save</i>
+						</div>
+						<span class="nav-link-text ms-1">Simpanan Pokok</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'simpanan' && $this->uri->segment(2) == 'wajib'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('simpanan/wajib') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">save</i>
+						</div>
+						<span class="nav-link-text ms-1">Simpanan Wajib</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'simpanan' && $this->uri->segment(2) == 'sukarela'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('simpanan/sukarela') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">save</i>
+						</div>
+						<span class="nav-link-text ms-1">Simpanan Sukarela</span>
+					</a>
+				</li>
+				<li class="nav-item mt-3">
+					<h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Laporan</h6>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'indeks'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('indeks') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">table_view</i>
+						</div>
+						<span class="nav-link-text ms-1">Data Index</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'transaksi'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('transaksi') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">qr_code</i>
+						</div>
+						<span class="nav-link-text ms-1">Transaksi Usaha</span>
+					</a>
+				</li>
+				<!-- <li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'transaksi' && $this->uri->segment(2) == 'pendapatan'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('transaksi/pendapatan') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">archive</i>
+						</div>
+						<span class="nav-link-text ms-1">Pendapatan Usaha</span>
+					</a>
+				</li> -->
+				<!-- <li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'transaksi' && $this->uri->segment(2) == 'pengeluaran'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('transaksi/pengeluaran') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">table_view</i>
+						</div>
+						<span class="nav-link-text ms-1">Pengeluaran Usaha</span>
+					</a>
+				</li> -->
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'keuangan'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('keuangan') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">credit_card</i>
+						</div>
+						<span class="nav-link-text ms-1">Keuangan</span>
+					</a>
+				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white <?php if (
 														$this->uri->segment(1) == 'jurnal'
@@ -41,7 +155,7 @@
 														echo "active bg-gradient-primary";
 													} ?>" href="<?= base_url('jurnal') ?>">
 						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-							<i class="material-icons opacity-10">copy</i>
+							<i class="material-icons opacity-10">archive</i>
 						</div>
 						<span class="nav-link-text ms-1">Jurnal Umum</span>
 					</a>
@@ -65,9 +179,33 @@
 														echo "active bg-gradient-primary";
 													} ?>" href="<?= base_url('neraca') ?>">
 						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-							<i class="material-icons opacity-10">receipt_long</i>
+							<i class="material-icons opacity-10">balance</i>
 						</div>
 						<span class="nav-link-text ms-1">Neraca saldo</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'arus'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('arus') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">wallet</i>
+						</div>
+						<span class="nav-link-text ms-1">Arus kas</span>
+					</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-white <?php if (
+														$this->uri->segment(1) == 'shu'
+													) {
+														echo "active bg-gradient-primary";
+													} ?>" href="<?= base_url('shu') ?>">
+						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+							<i class="material-icons opacity-10">scale</i>
+						</div>
+						<span class="nav-link-text ms-1">SHU</span>
 					</a>
 				</li>
 				<li class="nav-item">
@@ -77,7 +215,7 @@
 														echo "active bg-gradient-primary";
 													} ?>" href="<?= base_url('laporan') ?>">
 						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
-							<i class="material-icons opacity-10">bookmark</i>
+							<i class="material-icons opacity-10">print</i>
 						</div>
 						<span class="nav-link-text ms-1">Laporan</span>
 					</a>
