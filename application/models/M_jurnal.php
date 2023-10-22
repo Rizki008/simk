@@ -56,11 +56,13 @@ class M_jurnal extends CI_Model
 	}
 	public function hasildebit($bulan, $tahun)
 	{
-		return $this->db->query("SELECT *,SUM(saldo) as total FROM `transaksi` WHERE jenis_saldo='debit' AND MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
+		return $this->db->query("SELECT *,SUM(debet) as total FROM `transaksi` WHERE MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
+		// return $this->db->query("SELECT *,SUM(saldo) as total FROM `transaksi` WHERE jenis_saldo='debit' AND MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
 	}
 	public function hasilkredit($bulan, $tahun)
 	{
-		return $this->db->query("SELECT *,SUM(saldo) as total FROM `transaksi` WHERE jenis_saldo='kredit' AND MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
+		return $this->db->query("SELECT *,SUM(kredit) as total FROM `transaksi` WHERE MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
+		// return $this->db->query("SELECT *,SUM(saldo) as total FROM `transaksi` WHERE jenis_saldo='kredit' AND MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
 	}
 	public function akun($bulan, $tahun)
 	{
