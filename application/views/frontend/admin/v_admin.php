@@ -20,11 +20,18 @@
 					<div class="icon icon-lg icon-shape bg-gradient-primary shadow-primary text-center border-radius-xl mt-n4 position-absolute">
 						<i class="material-icons opacity-10">account_balance_wallet</i>
 					</div>
-					<?php foreach ($totaldebit as $key => $debit) { ?>
+					<?php
+					$total = 0;
+					$debits = 0;
+					foreach ($totaldebit as $key => $debit) {
+						if ($debit->jenis_saldo == 'debit') {
+							$total = $debits + $debit->saldo;
+						}
+					?>
 					<?php } ?>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Jumlah Saldo Debit</p>
-						<h4 class="mb-0">Rp. <?= number_format($debit->total, 0) ?></h4>
+						<h4 class="mb-0">Rp. <?= number_format($total, 0) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -36,11 +43,17 @@
 					<div class="icon icon-lg icon-shape bg-gradient-success shadow-success text-center border-radius-xl mt-n4 position-absolute">
 						<i class="material-icons opacity-10">account_balance_wallet</i>
 					</div>
-					<?php foreach ($totalkredit as $key => $kredit) { ?>
+					<?php $total = 0;
+					$kredits = 0;
+					foreach ($totalkredit as $key => $kredit) {
+						if ($kredit->jenis_saldo == 'kredit') {
+							$totals = $kredits + $kredit->saldo;
+						}
+					?>
 					<?php } ?>
 					<div class="text-end pt-1">
 						<p class="text-sm mb-0 text-capitalize">Jumlah Saldo Kredit</p>
-						<h4 class="mb-0">Rp. <?= number_format($kredit->totals) ?></h4>
+						<h4 class="mb-0">Rp. <?= number_format($totals) ?></h4>
 					</div>
 				</div>
 				<hr class="dark horizontal my-0">
@@ -67,7 +80,7 @@
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">No</th>
 									<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">No Reff</th>
 									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Nama Reff</th>
-									<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th>
+									<!-- <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Keterangan</th> -->
 								</tr>
 							</thead>
 							<tbody>
@@ -87,7 +100,7 @@
 										<td class="align-middle text-center text-sm">
 											<span class="text-xs font-weight-bold"> <?= $row->nama_reff ?> </span>
 										</td>
-										<td class="align-middle">
+										<!-- <td class="align-middle">
 											<div class="progress-wrapper w-75 mx-auto">
 												<div class="progress-info">
 													<div class="progress-percentage">
@@ -95,7 +108,7 @@
 													</div>
 												</div>
 											</div>
-										</td>
+										</td> -->
 									</tr>
 								<?php } ?>
 							</tbody>
