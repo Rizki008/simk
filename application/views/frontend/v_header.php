@@ -145,7 +145,7 @@
 						<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 							<i class="material-icons opacity-10">credit_card</i>
 						</div>
-						<span class="nav-link-text ms-1">Keuangan</span>
+						<span class="nav-link-text ms-1">Laba Rugi</span>
 					</a>
 				</li>
 				<li class="nav-item">
@@ -220,7 +220,7 @@
 						<span class="nav-link-text ms-1">SHU</span>
 					</a>
 				</li>
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a class="nav-link text-white <?php if (
 														$this->uri->segment(1) == 'laporan'
 													) {
@@ -231,6 +231,25 @@
 						</div>
 						<span class="nav-link-text ms-1">Laporan</span>
 					</a>
+				</li> -->
+				<li class="nav-item">
+					<div class="dropdown">
+						<a class="nav-link text-white dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+								<i class="material-icons opacity-10">print</i>
+							</div>
+							<span class="nav-link-text ms-1">Laporan</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/laba') ?>">Laba Rugi</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/jurnal') ?>">Jurnal Umum</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/buku') ?>">Buku Besar</a></li>
+							<!-- <li><a class="dropdown-item" href="<?= base_url('laporan_full/neraca') ?>">Neraca</a></li> -->
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/saldo') ?>">Neraca Saldo</a></li>
+							<!-- <li><a class="dropdown-item" href="#">Arus Kas</a></li> -->
+							<!-- <li><a class="dropdown-item" href="#">SHU</a></li> -->
+						</ul>
+					</div>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link text-white " href="<?= base_url('home/logout') ?>">
