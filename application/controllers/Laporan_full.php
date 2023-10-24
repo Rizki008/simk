@@ -1,0 +1,340 @@
+<?php
+
+
+
+defined('BASEPATH') or exit('No direct script access allowed');
+
+class Laporan_full extends CI_Controller
+{
+
+	public function __construct()
+	{
+		parent::__construct();
+		//Load Dependencies
+		$this->load->model('m_laporan');
+		$this->load->library('pdf');
+	}
+
+	// List all your items
+
+	public function jurnal()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulantahun(),
+			'isi' => 'frontend/laporan/jurnal/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+	public function buku()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulantahun(),
+			'isi' => 'frontend/laporan/buku/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+	public function neraca()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulantahun(),
+			'isi' => 'frontend/laporan/neraca/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+	public function saldo()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulantahun(),
+			'isi' => 'frontend/laporan/neraca_saldo/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+	public function kas()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulantahun(),
+			'isi' => 'frontend/laporan/arus/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+	public function shu()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulantahun(),
+			'isi' => 'frontend/laporan/shu/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+	public function laba()
+	{
+		$data = array(
+			'title' => 'Data Laporan',
+			'bulantahun' => $this->m_laporan->bulan(),
+			'isi' => 'frontend/laporan/laba_rugi/v_laporanmain'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+
+	public function cetak_jurnal()
+	{
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $bulan . ' ' . $tahun;
+
+		$akun = $this->m_laporan->akuns($bulan, $tahun);
+
+		$jurnal = $this->m_laporan->jurnaldetailsatu($bulan, $tahun);
+		$debit = $this->m_laporan->hasildebit($bulan, $tahun);
+		$kredit = $this->m_laporan->hasilkredit($bulan, $tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail($row->no_reff, $bulan, $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo($row->no_reff, $bulan, $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/jurnal/v_laporan', compact('title', 'akun', 'bulan', 'tahun', 'jurnal', 'debit', 'kredit', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $bulan . '_' . $tahun;
+		$this->pdf->load_view('frontend/laporan/jurnal/v_laporan', $data);
+	}
+	public function cetak_buku()
+	{
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $bulan . ' ' . $tahun;
+
+		$akun = $this->m_laporan->akuns($bulan, $tahun);
+
+		$jurnal = $this->m_laporan->jurnaldetailsatu($bulan, $tahun);
+		$debit = $this->m_laporan->hasildebit($bulan, $tahun);
+		$kredit = $this->m_laporan->hasilkredit($bulan, $tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail($row->no_reff, $bulan, $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo($row->no_reff, $bulan, $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/buku/v_laporan', compact('title', 'akun', 'bulan', 'tahun', 'jurnal', 'debit', 'kredit', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $bulan . '_' . $tahun;
+		$this->pdf->load_view('frontend/laporan/buku/v_laporan', $data);
+	}
+	public function cetak_neraca()
+	{
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $bulan . ' ' . $tahun;
+
+		$akun = $this->m_laporan->akuns($bulan, $tahun);
+
+		$lancar = $this->m_laporan->hasil_lancar($bulan, $tahun);
+		$tetap = $this->m_laporan->hasil_tetap($bulan, $tahun);
+		$pasiva = $this->m_laporan->hasil_pasiva($bulan, $tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail_neraca($row->no_reff, $bulan, $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo_neraca($row->no_reff, $bulan, $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/neraca/v_laporan', compact('title', 'akun', 'bulan', 'tahun', 'lancar', 'tetap', 'pasiva', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $bulan . '_' . $tahun;
+		$this->pdf->load_view('frontend/laporan/neraca/v_laporan', $data);
+	}
+	public function cetak_saldo()
+	{
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $bulan . ' ' . $tahun;
+
+		$akun = $this->m_laporan->akuns($bulan, $tahun);
+
+		$jurnal = $this->m_laporan->jurnaldetailsatu($bulan, $tahun);
+		$debit = $this->m_laporan->hasildebit($bulan, $tahun);
+		$kredit = $this->m_laporan->hasilkredit($bulan, $tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail($row->no_reff, $bulan, $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo($row->no_reff, $bulan, $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/neraca_saldo/v_laporan', compact('title', 'akun', 'bulan', 'tahun', 'jurnal', 'debit', 'kredit', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $bulan . '_' . $tahun;
+		$this->pdf->load_view('frontend/laporan/neraca_saldo/v_laporan', $data);
+	}
+	public function cetak_kas()
+	{
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $bulan . ' ' . $tahun;
+
+		$akun = $this->m_laporan->akuns($bulan, $tahun);
+
+		$jurnal = $this->m_laporan->jurnaldetailsatu($bulan, $tahun);
+		$debit = $this->m_laporan->hasildebit($bulan, $tahun);
+		$kredit = $this->m_laporan->hasilkredit($bulan, $tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail($row->no_reff, $bulan, $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo($row->no_reff, $bulan, $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/arus/v_laporan', compact('title', 'akun', 'bulan', 'tahun', 'jurnal', 'debit', 'kredit', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $bulan . '_' . $tahun;
+		$this->pdf->load_view('frontend/laporan/arus/v_laporan', $data);
+	}
+	public function cetak_shu()
+	{
+		$bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $bulan . ' ' . $tahun;
+
+		$akun = $this->m_laporan->akuns($bulan, $tahun);
+
+		$jurnal = $this->m_laporan->jurnaldetailsatu($bulan, $tahun);
+		$debit = $this->m_laporan->hasildebit($bulan, $tahun);
+		$kredit = $this->m_laporan->hasilkredit($bulan, $tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail($row->no_reff, $bulan, $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo($row->no_reff, $bulan, $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/shu/v_laporan', compact('title', 'akun', 'bulan', 'tahun', 'jurnal', 'debit', 'kredit', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $bulan . '_' . $tahun;
+		$this->pdf->load_view('frontend/laporan/shu/v_laporan', $data);
+	}
+	public function cetak_laba()
+	{
+		// $bulan = $this->input->post('bulan');
+		$tahun = $this->input->post('tahun');
+		$title = 'Laporan ' . $tahun;
+
+		$akun = $this->m_laporan->akuns_laba($tahun);
+
+		$jurnal_pendapatan = $this->m_laporan->jurnaldetailsatupendapatan_laba($tahun);
+		$jurnal_beban = $this->m_laporan->jurnaldetailsatubeban_laba($tahun);
+		$keuangan = $this->m_laporan->jurnaldetailsatukeuangan_laba($tahun);
+		$debit = $this->m_laporan->hasildebit_laba($tahun);
+		$kredit = $this->m_laporan->hasilkredit_laba($tahun);
+
+		$data = null;
+		$saldo = null;
+
+		foreach ($akun as $row) {
+			$data[] = (array) $this->m_laporan->jurnaldetail_laba($row->no_reff,  $tahun);
+			$saldo[] = (array) $this->m_laporan->jurnaldetailsaldo_laba($row->no_reff,  $tahun);
+		}
+
+		if ($data == null || $saldo == null) {
+			$this->session->set_flashdata('pesan', 'Laporan Tidak Ditemukan');
+			redirect('laporan');
+		}
+
+		$jumlah = count($data);
+
+		$data = $this->load->view('frontend/laporan/laba_rugi/v_laporan', compact('title', 'akun', 'tahun', 'jurnal_pendapatan', 'jurnal_beban', 'keuangan', 'debit', 'kredit', 'data', 'saldo', 'jumlah'), true);
+		// echo var_dump($data);
+		// die();
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'landscape');
+		$this->pdf->filename = "laporan_" . $tahun;
+		$this->pdf->load_view('frontend/laporan/laba_rugi/v_laporan', $data);
+	}
+}
+
+/* End of file Laporan.php */
