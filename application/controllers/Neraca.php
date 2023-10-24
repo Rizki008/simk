@@ -59,7 +59,7 @@ class Neraca extends CI_Controller
 	public function saldo()
 	{
 		$data = array(
-			'title' => 'Data Neraca',
+			'title' => 'Data Neraca Saldo',
 			'bulantahun' => $this->m_jurnal->bulantahun(),
 			'isi' => 'frontend/neraca_saldo/v_neraca'
 		);
