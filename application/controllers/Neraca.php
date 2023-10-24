@@ -21,7 +21,7 @@ class Neraca extends CI_Controller
 	{
 		$data = array(
 			'title' => 'Data Neraca',
-			// 'bulantahun' => $this->m_jurnal->bulantahun(),
+			'bulantahun' => $this->m_jurnal->bulantahun(),
 			'isi' => 'frontend/neraca/v_neraca_lap'
 		);
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
@@ -50,7 +50,18 @@ class Neraca extends CI_Controller
 			'jurnal' => $this->m_jurnal->jurnaldetail($bulan, $tahun),
 			'kredit' => $this->m_jurnal->hasilkredit($bulan, $tahun),
 			'debit' => $this->m_jurnal->hasildebit($bulan, $tahun),
-			'isi' => 'frontend/neraca/v_detail'
+			'isi' => 'frontend/neraca_saldo/v_detail'
+		);
+		$this->load->view('frontend/v_wrapper', $data, FALSE);
+	}
+
+	// List all your items
+	public function saldo()
+	{
+		$data = array(
+			'title' => 'Data Neraca',
+			'bulantahun' => $this->m_jurnal->bulantahun(),
+			'isi' => 'frontend/neraca_saldo/v_neraca'
 		);
 		$this->load->view('frontend/v_wrapper', $data, FALSE);
 	}
