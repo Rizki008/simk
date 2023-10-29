@@ -69,19 +69,21 @@
 </head>
 
 <body>
-	<h1 class="text-center">Laporan Bulan <?= $bulan ?> <?= $tahun ?></h1>
+	<h1 class="text-center">Laporan Neraca Priode <?= $dari ?> Sampai <?= $sampai ?></h1>
 	<hr>
 	<h3 class="m-fix text-center" style="margin-top:40px">Neraca</h3>
 	<table class="mb-fix">
 		<tr>
-			<th colspan="5">Aktiva Lancar</th>
+			<th colspan="6">Aktiva Lancar</th>
 		</tr>
 		<tr class="text-center font-bold">
 			<td>No.</td>
 			<td>No Reff</td>
 			<td colspan="3">Nama Akun</td>
+			<td></td>
 		</tr>
 		<?php
+		$i = 1;
 		$total = 0;
 		$debitst = 0;
 		$kreditst = 0;
@@ -98,15 +100,15 @@
 			<tr>
 				<td class="text-center"><?= $i++ ?></td>
 				<td class="text-center"><?= $row->no_reff ?></td>
-				<td class="text-center"><?= $row->nama_reff ?></td>
+				<td class="text-center" colspan="3"><?= $row->nama_reff ?></td>
 				<td class="text-center"><?= 'Rp. ' . number_format($hasilst, 0, ',', '.') ?></td>
 			</tr>
 		<?php
 		}
 		?>
 		<tr>
-			<td colspan="4" class="text-center"><b>Jumlah Total</b></td>
-			<td class="text-danger"><b><?= 'Rp. ' . number_format($total, 0, ',', '.') ?></b></td>
+			<td colspan="5" class="text-center"><b>Jumlah Total</b></td>
+			<td class="text-danger" colspan="3"><b><?= 'Rp. ' . number_format($total, 0, ',', '.') ?></b></td>
 			<!-- <td colspan="2" class="text-danger"><b><?= 'Rp. ' . number_format($kredits->total, 0, ',', '.') ?></b></td> -->
 		</tr>
 		<!-- <tr class="text-center bg-danger ">
@@ -115,12 +117,13 @@
 	</table>
 	<table class="mb-fix">
 		<tr>
-			<th colspan="5">Aktiva Tetap</th>
+			<th colspan="6">Aktiva Tetap</th>
 		</tr>
 		<tr class="text-center font-bold">
 			<td>No.</td>
 			<td>No Reff</td>
 			<td colspan="3">Nama Akun</td>
+			<td></td>
 		</tr>
 		<?php
 		$totals = 0;
@@ -140,25 +143,26 @@
 			<tr>
 				<td class="text-center"><?= $i++ ?></td>
 				<td class="text-center"><?= $tep->no_reff ?></td>
-				<td class="text-center"><?= $tep->nama_reff ?></td>
+				<td class="text-center" colspan="3"><?= $tep->nama_reff ?></td>
 				<td class="text-center"><?= 'Rp. ' . number_format($hasils, 0, ',', '.') ?></td>
 			</tr>
 		<?php
 		}
 		?>
 		<tr>
-			<td colspan="4" class="text-center"><b>Jumlah Total</b></td>
-			<td class="text-danger"><b><?= 'Rp. ' . number_format($totals, 0, ',', '.') ?></b></td>
+			<td colspan="5" class="text-center"><b>Jumlah Total</b></td>
+			<td class="text-danger" colspan="3"><b><?= 'Rp. ' . number_format($totals, 0, ',', '.') ?></b></td>
 		</tr>
 	</table>
 	<table class="mb-fix">
 		<tr>
-			<th colspan="5">Pasiva</th>
+			<th colspan="6">Pasiva</th>
 		</tr>
 		<tr class="text-center font-bold">
 			<td>No.</td>
 			<td>No Reff</td>
 			<td colspan="3">Nama Akun</td>
+			<td></td>
 		</tr>
 		<?php
 		$totalss = 0;
@@ -178,15 +182,15 @@
 			<tr>
 				<td class="text-center"><?= $i++ ?></td>
 				<td class="text-center"><?= $pasiv->no_reff ?></td>
-				<td class="text-center"><?= $pasiv->nama_reff ?></td>
+				<td class="text-center" colspan="3"><?= $pasiv->nama_reff ?></td>
 				<td class="text-center"><?= 'Rp. ' . number_format($hasil, 0, ',', '.') ?></td>
 			</tr>
 		<?php
 		}
 		?>
 		<tr>
-			<td colspan="4" class="text-center"><b>Jumlah Total</b></td>
-			<td class="text-danger"><b><?= 'Rp. ' . number_format($totalss, 0, ',', '.') ?></b></td>
+			<td colspan="5" class="text-center"><b>Jumlah Total</b></td>
+			<td class="text-danger" colspan="3"><b><?= 'Rp. ' . number_format($totalss, 0, ',', '.') ?></b></td>
 		</tr>
 	</table>
 	<p class="text-right" style="margin-top:50px;">Dicetak Oleh <?= $this->session->userdata('nama') ?> Pada Tanggal
