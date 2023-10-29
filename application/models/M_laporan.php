@@ -86,17 +86,14 @@ class M_laporan extends CI_Model
 	public function hasil_lancar($bulan, $tahun)
 	{
 		return $this->db->query("SELECT akun.no_reff,nama_reff,jenis_saldo,saldo,keterangan FROM transaksi LEFT JOIN akun ON transaksi.no_reff=akun.no_reff WHERE akun.no_reff like '1-1%' AND tgl_transaksi BETWEEN '$bulan' AND '$tahun' group by no_reff,nama_reff")->result();
-		// return $this->db->query("SELECT (sum(debet)-sum(kredit)) as hasil,akun.no_reff,nama_reff FROM transaksi LEFT JOIN akun ON transaksi.no_reff=akun.no_reff WHERE akun.no_reff like '1-1%' AND tgl_transaksi BETWEEN '$dari' AND '$sampai' group by no_reff,nama_reff")->result();
 	}
 	public function hasil_tetap($bulan, $tahun)
 	{
 		return $this->db->query("SELECT akun.no_reff,nama_reff,jenis_saldo,saldo,keterangan FROM transaksi LEFT JOIN akun ON transaksi.no_reff=akun.no_reff WHERE akun.no_reff like '1-2%' AND tgl_transaksi BETWEEN '$bulan' AND '$tahun' group by no_reff,nama_reff")->result();
-		// return $this->db->query("SELECT (sum(debet)-sum(kredit)) as hasil,akun.no_reff,nama_reff FROM transaksi LEFT JOIN akun ON transaksi.no_reff=akun.no_reff WHERE akun.no_reff like '1-2%' AND tgl_transaksi BETWEEN '$dari' AND '$sampai' group by no_reff,nama_reff")->result();
 	}
 	public function hasil_pasiva($bulan, $tahun)
 	{
 		return $this->db->query("SELECT akun.no_reff,nama_reff,jenis_saldo,saldo,keterangan FROM transaksi LEFT JOIN akun ON transaksi.no_reff=akun.no_reff WHERE akun.no_reff like '2%' AND tgl_transaksi BETWEEN '$bulan' AND '$tahun' group by no_reff,nama_reff")->result();
-		// return $this->db->query("SELECT (sum(debet)-sum(kredit)) as hasil,akun.no_reff,nama_reff FROM transaksi LEFT JOIN akun ON transaksi.no_reff=akun.no_reff WHERE akun.no_reff like '2%' AND tgl_transaksi BETWEEN '$dari' AND '$sampai' group by no_reff,nama_reff")->result();
 	}
 	public function jurnaldetail_neraca($no_reff, $bulan, $tahun)
 	{
@@ -105,6 +102,26 @@ class M_laporan extends CI_Model
 	public function jurnaldetailsaldo_neraca($no_reff, $bulan, $tahun)
 	{
 		return $this->db->query("SELECT transaksi.jenis_saldo,transaksi.saldo,MONTHNAME(tgl_transaksi) AS bulan, YEAR(tgl_transaksi) AS tahun FROM `transaksi` LEFT JOIN `akun` ON `akun`.`no_reff` = `transaksi`.`no_reff` WHERE transaksi.no_reff='" . $no_reff . "' AND MONTHNAME(tgl_transaksi)='" . $bulan . "' AND YEAR(tgl_transaksi)='" . $tahun . "'")->result();
+	}
+
+	// ARUS KAS
+	public function keterangan()
+	{
+		return $this->db->query('SELECT * FROM `index` WHERE id_index !=1 order by keterangan asc;')->result();
+	}
+	public function keterangan_hasil($id_index)
+	{
+		return $this->db->query("SELECT * FROM `index` WHERE id_index='$id_index' order by keterangan asc;")->result();
+	}
+	public function hasil_arus_kas2($id_index, $dari, $sampai)
+	{
+		return $this->db->query("SELECT * FROM transaksi WHERE id_index='$id_index' AND (tgl_transaksi BETWEEN '$dari' AND '$sampai')")->result();
+	}
+
+	// SHU 
+	public function hasil_shu($tahun)
+	{
+		return $this->db->query("SELECT * FROM transaksi WHERE YEAR(tgl_transaksi)='$tahun' AND no_reff IN ('4-111','4-112','4-113')")->result();
 	}
 }
 
