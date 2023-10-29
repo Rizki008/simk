@@ -244,10 +244,10 @@
 							<li><a class="dropdown-item" href="<?= base_url('laporan_full/laba') ?>">Laba Rugi</a></li>
 							<li><a class="dropdown-item" href="<?= base_url('laporan_full/jurnal') ?>">Jurnal Umum</a></li>
 							<li><a class="dropdown-item" href="<?= base_url('laporan_full/buku') ?>">Buku Besar</a></li>
-							<!-- <li><a class="dropdown-item" href="<?= base_url('laporan_full/neraca') ?>">Neraca</a></li> -->
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/neraca') ?>">Neraca</a></li>
 							<li><a class="dropdown-item" href="<?= base_url('laporan_full/saldo') ?>">Neraca Saldo</a></li>
-							<!-- <li><a class="dropdown-item" href="#">Arus Kas</a></li> -->
-							<!-- <li><a class="dropdown-item" href="#">SHU</a></li> -->
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/kas') ?>">Arus Kas</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('laporan_full/shu') ?>">SHU</a></li>
 						</ul>
 					</div>
 				</li>
