@@ -18,7 +18,7 @@ class Keuangan extends CI_Controller
 	public function index()
 	{
 		$data = array(
-			'title' => 'Informasi Laporan Keuangan',
+			'title' => 'Informasi Laporan Laba Rugi',
 			// 'bulantahun' => $this->m_jurnal->bulantahun(),
 			// 'keterangan' => $this->m_neraca->keterangan(),
 			'isi' => 'frontend/keuangan/v_keuangan_lap'

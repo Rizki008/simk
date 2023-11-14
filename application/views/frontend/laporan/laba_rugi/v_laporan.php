@@ -72,7 +72,7 @@
 	<h1 class="text-center">Laporan <?= $tahun ?></h1>
 	<hr>
 
-	<h3 class="m-fix text-center" style="margin-top:40px">Jurnal Umum</h3>
+	<h3 class="m-fix text-center" style="margin-top:40px">Laba Rugi</h3>
 	<table class="mb-fix">
 		<tr>
 			<td colspan="5">PENDAPATAN</td>
@@ -157,8 +157,10 @@
 			$hasilst = $debitst - $kreditst;
 			$total += $hasilst;
 
+			// $pph =  (0.5 / 100 * $hasilst);
+			// $ppn =  (11 / 100 * $pph);
 			$pph =  (0.5 / 100 * $hasilst);
-			$ppn =  (11 / 100 * $pph);
+			$ppn =  $hasilst - ($hasilst * 11.5 / 100);
 		?>
 		<?php } ?>
 		<tr>

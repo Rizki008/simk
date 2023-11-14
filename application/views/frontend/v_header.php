@@ -238,7 +238,7 @@
 							<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 								<i class="material-icons opacity-10">print</i>
 							</div>
-							<span class="nav-link-text ms-1">Laporan</span>
+							<span class="nav-link-text ms-1">Laporan Keuangan</span>
 						</a>
 						<ul class="dropdown-menu">
 							<li><a class="dropdown-item" href="<?= base_url('laporan_full/laba') ?>">Laba Rugi</a></li>

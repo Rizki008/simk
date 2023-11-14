@@ -55,7 +55,7 @@
 											<option value="kredit">Kredit</option>
 										</select>
 									</div>
-									<label class="form-label">Saldo</label>
+									<label class="form-label">Jumlah</label>
 									<div class="input-group input-group-outline mb-3">
 										<input type="number" name="saldo" class="form-control" placeholder="Saldo">
 									</div>
