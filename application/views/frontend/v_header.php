@@ -238,6 +238,21 @@
 							<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
 								<i class="material-icons opacity-10">print</i>
 							</div>
+							<span class="nav-link-text ms-1">Rekap Simpanan</span>
+						</a>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="<?= base_url('rekap/pokok') ?>">Simpanan Pokok</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('rekap/wajib') ?>">Simpanan Wajib</a></li>
+							<li><a class="dropdown-item" href="<?= base_url('rekap/sukarela') ?>">Simpanan Sukarela</a></li>
+						</ul>
+					</div>
+				</li>
+				<li class="nav-item">
+					<div class="dropdown">
+						<a class="nav-link text-white dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+							<div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
+								<i class="material-icons opacity-10">print</i>
+							</div>
 							<span class="nav-link-text ms-1">Laporan Keuangan</span>
 						</a>
 						<ul class="dropdown-menu">
