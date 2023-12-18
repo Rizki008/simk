@@ -52,6 +52,10 @@
 									<div class="text-center">
 										<button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Masuk</button>
 									</div>
+									<p class="mt-4 text-sm text-center">
+										Belum Punya Akun ?
+										<a href="<?= base_url('home/register') ?>" class="text-primary text-gradient font-weight-bold">Register</a>
+									</p>
 								</form>
 							</div>
 						</div>

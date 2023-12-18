@@ -15,4 +15,9 @@ class M_auth extends CI_Model
 		));
 		return $this->db->get()->row();
 	}
+
+	public function register($data)
+	{
+		$this->db->insert('user', $data);
+	}
 }
