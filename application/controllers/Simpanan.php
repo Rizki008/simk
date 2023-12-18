@@ -28,30 +28,57 @@ class Simpanan extends CI_Controller
 	// }
 	public function pokok()
 	{
-		$data = array(
-			'title' => 'Data Simpanan Pokok',
-			'pokok' => $this->m_transaksi->pokok(),
-			'isi' => 'frontend/transaksi/v_pokok'
-		);
-		$this->load->view('frontend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') === 1) {
+			$data = array(
+				'title' => 'Data Simpanan Pokok',
+				'pokok' => $this->m_transaksi->pokok(),
+				'isi' => 'frontend/transaksi/v_pokok'
+			);
+			$this->load->view('frontend/v_wrapper', $data, FALSE);
+		} else {
+			$data = array(
+				'title' => 'Data Simpanan Pokok',
+				'pokok' => $this->m_transaksi->pokok(),
+				'isi' => 'backend/transaksi/v_pokok'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		}
 	}
 	public function wajib()
 	{
-		$data = array(
-			'title' => 'Data Simpanan Wajib',
-			'wajib' => $this->m_transaksi->wajib(),
-			'isi' => 'frontend/transaksi/v_wajib'
-		);
-		$this->load->view('frontend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') === 1) {
+			$data = array(
+				'title' => 'Data Simpanan Wajib',
+				'wajib' => $this->m_transaksi->wajib(),
+				'isi' => 'frontend/transaksi/v_wajib'
+			);
+			$this->load->view('frontend/v_wrapper', $data, FALSE);
+		} else {
+			$data = array(
+				'title' => 'Data Simpanan Wajib',
+				'wajib' => $this->m_transaksi->wajib(),
+				'isi' => 'backend/transaksi/v_wajib'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		}
 	}
 	public function sukarela()
 	{
-		$data = array(
-			'title' => 'Data Simanan Sukarela',
-			'sukarela' => $this->m_transaksi->sukarela(),
-			'isi' => 'frontend/transaksi/v_sukarela'
-		);
-		$this->load->view('frontend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') === 1) {
+			$data = array(
+				'title' => 'Data Simanan Sukarela',
+				'sukarela' => $this->m_transaksi->sukarela(),
+				'isi' => 'frontend/transaksi/v_sukarela'
+			);
+			$this->load->view('frontend/v_wrapper', $data, FALSE);
+		} else {
+			$data = array(
+				'title' => 'Data Simanan Sukarela',
+				'sukarela' => $this->m_transaksi->sukarela(),
+				'isi' => 'backend/transaksi/v_sukarela'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		}
 	}
 
 	// CRUD TRANSAKSI
