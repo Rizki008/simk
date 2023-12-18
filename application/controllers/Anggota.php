@@ -17,12 +17,21 @@ class anggota extends CI_Controller
 	// List all your items
 	public function index()
 	{
-		$data = array(
-			'title' => 'Data Anggota',
-			'anggota' => $this->m_akun->anggota(),
-			'isi' => 'frontend/anggota/v_anggota'
-		);
-		$this->load->view('frontend/v_wrapper', $data, FALSE);
+		if ($this->session->userdata('level_user') === 1) {
+			$data = array(
+				'title' => 'Data Anggota',
+				'anggota' => $this->m_akun->anggota(),
+				'isi' => 'frontend/anggota/v_anggota'
+			);
+			$this->load->view('frontend/v_wrapper', $data, FALSE);
+		} else {
+			$data = array(
+				'title' => 'Data Anggota',
+				'anggota' => $this->m_akun->anggota(),
+				'isi' => 'backend/anggota/v_anggota'
+			);
+			$this->load->view('backend/v_wrapper', $data, FALSE);
+		}
 	}
 
 	// Add a new item
